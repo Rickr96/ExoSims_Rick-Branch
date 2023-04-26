@@ -662,6 +662,7 @@ class SimulatedUniverse(object):
             "p": self.p,
             "plan2star": self.plan2star,
             "star": self.TargetList.Name[self.plan2star],
+            "fEZ": self.fEZ,
         }
         if self.commonSystemInclinations:
             systems["starI"] = self.TargetList.I
