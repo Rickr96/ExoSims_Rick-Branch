@@ -197,11 +197,12 @@ class ZodiacalLight(object):
         # Absolute magnitude of the Sun (in the V band)
         MVsun = 4.83
 
-        if self.commonSystemfEZ:
-            nEZ = self.nEZ
-        else:
-            nEZ = self.gen_systemnEZ(len(MV))
+        #if self.commonSystemfEZ:
+        #    nEZ = self.nEZ
+        #else:
+        #    nEZ = self.gen_systemnEZ(len(MV))
 
+        self.nEZ = self.gen_systemnEZ(len(MV))
         # inclinations should be strictly in [0, pi], but allow for weird sampling:
         beta = I.to("deg").value
         beta[beta > 180] -= 180
@@ -216,7 +217,7 @@ class ZodiacalLight(object):
         fbeta = self.zodi_latitudinal_correction_factor(beta * u.deg, model="interp")
 
         fEZ = (
-            nEZ
+            self.nEZ
             * 10 ** (-0.4 * self.magEZ)
             * 10.0 ** (-0.4 * (MV - MVsun))
             * fbeta
