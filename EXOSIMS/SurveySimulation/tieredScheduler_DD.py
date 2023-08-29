@@ -130,6 +130,7 @@ class tieredScheduler_DD(tieredScheduler):
                 DRM["OB_nb"] = TK.OBnumber + 1
                 DRM["ObsNum"] = cnt
                 DRM["star_ind"] = sInd
+                DRM["star_name"] = TL.Name[sInd]
                 pInds = np.where(SU.plan2star == sInd)[0]
                 DRM["plan_inds"] = pInds.astype(int).tolist()
 
